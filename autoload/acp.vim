@@ -103,6 +103,14 @@ function acp#meetsForFile(context)
 endfunction
 
 "
+function acp#meetsForJavascriptOmni(context)
+  if a:context =~ '[^. \t]\(\.\)\k\{' . 0  . ',}$'
+    return 1
+  endif
+  return 0
+endfunction
+
+"
 function acp#meetsForRubyOmni(context)
   if !has('ruby')
     return 0

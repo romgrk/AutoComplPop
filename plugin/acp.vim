@@ -27,14 +27,15 @@ endfunction
 "
 function s:makeDefaultBehavior()
   let behavs = {
-        \   '*'      : [],
-        \   'ruby'   : [],
-        \   'python' : [],
-        \   'perl'   : [],
-        \   'xml'    : [],
-        \   'html'   : [],
-        \   'xhtml'  : [],
-        \   'css'    : [],
+        \   '*'          : [],
+        \   'javascript' : [],
+        \   'ruby'       : [],
+        \   'python'     : [],
+        \   'perl'       : [],
+        \   'xml'        : [],
+        \   'html'       : [],
+        \   'xhtml'      : [],
+        \   'css'        : [],
         \ }
   "---------------------------------------------------------------------------
   if !empty(g:acp_behaviorUserDefinedFunction) &&
@@ -74,6 +75,12 @@ function s:makeDefaultBehavior()
           \   'repeat'  : 1,
           \ })
   endfor
+  "---------------------------------------------------------------------------
+  call add(behavs.javascript, {
+        \   'command' : "\<C-x>\<C-o>",
+        \   'meets'   : 'acp#meetsForJavascriptOmni',
+        \   'repeat'  : 0,
+        \ })
   "---------------------------------------------------------------------------
   call add(behavs.ruby, {
         \   'command' : "\<C-x>\<C-o>",
