@@ -193,11 +193,13 @@ function acp#onPopupPost()
     inoremap <silent> <expr> <C-h> acp#onBs()
     inoremap <silent> <expr> <BS>  acp#onBs()
     " a command to restore to original text and select the first match
-    return (s:behavsCurrent[s:iBehavs].command =~# "\<C-p>" ? "\<C-n>\<Up>"
-          \                                                 : "\<C-p>\<Down>")
+    return (s:behavsCurrent[s:iBehavs].command =~# "\<C-p>" ? "\<C-n>"
+          \                                                 : "\<C-p>")
+    "return (s:behavsCurrent[s:iBehavs].command =~# "\<C-p>" ? "\<C-n>\<Up>"
+          "\                                                 : "\<C-p>\<Down>")
   endif
   let s:iBehavs += 1
-  if len(s:behavsCurrent) > s:iBehavs 
+  if len(s:behavsCurrent) > s:iBehavs
     call s:setCompletefunc()
     return printf("\<C-e>%s\<C-r>=acp#onPopupPost()\<CR>",
           \       s:behavsCurrent[s:iBehavs].command)
